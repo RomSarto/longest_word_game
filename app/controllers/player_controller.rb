@@ -6,21 +6,27 @@ class PlayerController < ApplicationController
   def game
     @grid = generate_grid(10).join(' ')
     @start_time = Time.now
-
+    session[:number_of_games] ||= 0
+    session[:total_score] ||= 0
+    session[:average_sore] ||= 0
   end
 
   def score
-    @end_time =  Time.now
+    @end_time = Time.now
     @attempt = params[:attempt]
     @start_time = Time.parse(params[:start_time])
     @grid = params[:grid].split(' ')
     @result = run_game(@attempt, @grid, @start_time, @end_time)
-  end
+    session[:number_of_games] += 1
+    session[:total_score] += @result[:score]
+    session[:average_sore] = session[:total_score] / session[:number_of_games]
+   end
 
   private
 
+
   def generate_grid(grid_size)
-  Array.new(grid_size) { ('A'..'Z').to_a[rand(26)] }
+    Array.new(grid_size) { ('A'..'Z').to_a[rand(26)] }
   end
 
 

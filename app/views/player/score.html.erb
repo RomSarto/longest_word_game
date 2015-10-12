@@ -1,5 +1,10 @@
 <h1><%= @result[:message] %></h1>
 <p>Here is your score: <%= @result[:score] %></p>
+<p>Your stats:</p>
+<ul>
+  <li>You played <%= session[:number_of_games]%> games</li>
+  <li>Your average score: <%= session[:number_of_games]%></li>
+</ul>
 
 <p><%= link_to 'Play again!', '/game' %></p>
 
