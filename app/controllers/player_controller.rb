@@ -8,7 +8,7 @@ class PlayerController < ApplicationController
     @start_time = Time.now
     session[:number_of_games] ||= 0
     session[:total_score] ||= 0
-    session[:average_sore] ||= 0
+    session[:average_score] ||= 0
   end
 
   def score
@@ -19,7 +19,7 @@ class PlayerController < ApplicationController
     @result = run_game(@attempt, @grid, @start_time, @end_time)
     session[:number_of_games] += 1
     session[:total_score] += @result[:score]
-    session[:average_sore] = session[:total_score] / session[:number_of_games]
+    session[:average_score] = session[:total_score] / session[:number_of_games]
    end
 
   private

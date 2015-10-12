@@ -1,0 +1,17 @@
+
+h1 = @result[:message]
+p
+  'Here is your score:
+  = @result[:score]
+p Your stats:
+ul
+  li
+    'You played
+    =' session[:number_of_games]
+    'games
+  li
+    'Your average score:
+    = session[:average_score]
+p = link_to 'Play again!', game_path
+
+
