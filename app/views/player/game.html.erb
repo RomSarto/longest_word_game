@@ -1,0 +1,18 @@
+<h1>Welcome to the longest word game!</h1>
+
+<h2>Here is the list of letters you should work with :</h2>
+<p><%= @grid %></p>
+
+<p>Try to compute the longest possible word!</p>
+
+
+
+<form action="/score" method="post">
+  <label for="question">Type in your best try!</label>
+  <input type="hidden" id="grid" name="grid" value="<%= @grid %>">
+  <input type="hidden" id="start_time" name="start_time" value="<%= @start_time %>">
+  <input type="text" id="attempt" name="attempt" placeholder="longest">
+  <input type="submit" value="Go on!">
+</form>
+
+
